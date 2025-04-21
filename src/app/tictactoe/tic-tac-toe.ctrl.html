@@ -1,5 +1,5 @@
 <div>
-  <h1 *ngIf="winnerFound">{{ currentPlayer | uppercase}} is the winner</h1>
+  <h1 *ngIf="winnerFound"  [ngClass]="{'o-color': currentPlayer == 'o', 'x-color': currentPlayer == 'x'}">{{ currentPlayer | uppercase}} is the winner</h1>
   <h1 *ngIf="matchDraw">Match Draw</h1>
 
   <h2
