@@ -1,5 +1,11 @@
 :host {
+    h2, h1{
+        //align-items: center;
+       text-align: center;
+        //justify-content: center;
+    }
   .game-board {
+    align-items: center;
     display: grid;
     grid-template-columns: repeat(3, auto);
     gap: 10px;
@@ -32,6 +38,12 @@
     // background-color: red;
   }
 
+  .o-color {
+    color: blue;
+  }
+  .x-color {
+    color: red;
+  }
   .x {
     background-color: red;
   }

@@ -16,6 +16,7 @@ export class TictactoeComponent {
 
   displayColor: string = '';
   winnerFound: boolean = false;
+  matchDraw: boolean = false;
   nextPlayBoardIndex: number | null = null;
   winningCombos = [
     [0, 1, 2], // Rows
@@ -58,8 +59,9 @@ export class TictactoeComponent {
     this.updateNextPlayBoardIndex(boardIndex, cellIndex);
     console.log(this.nextPlayBoardIndex);
 
+    
     this.checkUltimateWinner();
-    if (this.winnerFound) {
+    if (this.winnerFound || this.matchDraw) {
       return;
     }
 
@@ -84,6 +86,15 @@ export class TictactoeComponent {
         //alert(`Ultimate winner found: ${board[a]}`);
         //  this.boardWinnerMap.clear();
       }
+    }
+
+    const draw = board.every((cell) => {
+      return cell !== '' && cell !== null;
+    });
+    if(draw) {
+      this.matchDraw = true;
+      console.log('Ultimate draw found');
+      //alert(`Ultimate draw found`);
     }
   }
 
@@ -112,6 +123,14 @@ export class TictactoeComponent {
         return true;
       }
     }
+
+    const boardFull = board.every((cell) => {
+      return cell !== '' && cell !== null;
+    });
+    if (boardFull) {
+      this.boardWinnerMap.set(boardIndex, 'draw');
+    }
+
     return false; // No winner found
   }
 }
@@ -123,4 +142,4 @@ export class TictactoeComponent {
 // 4. add a message to show the current player
 // 5. draw condition
 // 6. add a message to show the draw condition
-// 7. add a message to draw in board 
+// 7. add a message to draw in board

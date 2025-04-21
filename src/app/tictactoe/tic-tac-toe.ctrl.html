@@ -1,5 +1,14 @@
 <div>
-  <h1 *ngIf="winnerFound">{{ currentPlayer}} is the winner</h1>
+  <h1 *ngIf="winnerFound">{{ currentPlayer | uppercase}} is the winner</h1>
+  <h1 *ngIf="matchDraw">Match Draw</h1>
+
+  <h2
+  *ngIf="!winnerFound && !matchDraw"
+    [ngClass]="{'o-color': currentPlayer == 'o', 'x-color': currentPlayer == 'x'}"
+  >
+    {{currentPlayer | uppercase }}'s turn
+  </h2>
+
   <div class="game-board">
     <div
       class="mini-board"
@@ -11,7 +20,13 @@
       *ngFor="let miniboard of cellContent; let i = index"
     >
       <div class="cell" *ngFor="let cell of miniboard; let j = index">
-        <div class="cell-content" (click)="onCellClick(i, j)">{{ cell }}</div>
+        <div
+          class="cell-content"
+          [ngClass]="{'o-color': cell == 'o', 'x-color': cell == 'x'}"
+          (click)="onCellClick(i, j)"
+        >
+          {{ cell }}
+        </div>
       </div>
     </div>
   </div>
