@@ -17,9 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/tictactoe",
+            "outputPath": "dist",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/UltimateTicTacToe/",
             "polyfills": [
               "zone.js"
             ],
@@ -34,12 +35,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -100,6 +96,9 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

@@ -1,20 +1,18 @@
 <div>
-    
-    <h1 *ngIf="winnerFound">{{ currentPlayer}} is the winner</h1>
-    <div class="game-board">
-        <div class="mini-board"
-        [class.winner-found]="winnerFound"
-        [class.disabled-board-permanent]="checkIfDisabled(i)"
-            [ngClass]="{'disabled-board': nextPlayBoardIndex !== null && nextPlayBoardIndex !== i, 'active-board': !checkIfDisabled(i) && nextPlayBoardIndex === i}"
-            *ngFor="let miniboard of cellContent; let i = index">
-            <div class="cell" *ngFor="let cell of miniboard; let j = index">
-                <div class="cell-content" (click)="onCellClick(i, j)">
-                    {{ cell }}
-                </div>
-            </div>
-
-        </div>
+  <h1 *ngIf="winnerFound">{{ currentPlayer}} is the winner</h1>
+  <div class="game-board">
+    <div
+      class="mini-board"
+      [class.winner-found]="winnerFound"
+      [class.disabled-board-permanent]="checkIfDisabled(i)"
+      [class.x]="checkIfDisabled(i) && boardWinnerMap.get(i) === 'x'"
+      [class.o]="checkIfDisabled(i) && boardWinnerMap.get(i) === 'o'"
+      [ngClass]="{'disabled-board': nextPlayBoardIndex !== null && nextPlayBoardIndex !== i, 'active-board': !checkIfDisabled(i) && nextPlayBoardIndex === i}"
+      *ngFor="let miniboard of cellContent; let i = index"
+    >
+      <div class="cell" *ngFor="let cell of miniboard; let j = index">
+        <div class="cell-content" (click)="onCellClick(i, j)">{{ cell }}</div>
+      </div>
     </div>
-
-   
+  </div>
 </div>
