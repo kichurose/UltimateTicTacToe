@@ -1,6 +1,6 @@
 
 export default {
-  basePath: 'https://github.com/kichurose/UltimateTicTacToe.git',
+  basePath: '/UltimateTicTacToe',
   supportedLocales: {
   "en-US": ""
 },
